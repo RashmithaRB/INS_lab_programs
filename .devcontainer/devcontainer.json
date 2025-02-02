@@ -1,10 +1,11 @@
 {
-    "workspaceFolder": "/workspaces/INS_lab_programs/Caesor_Cipher",
+    "workspaceFolder": "/workspaces/INS_lab_programs",
     "customizations": {
         "vscode": {
             "settings": {
-                "terminal.integrated.cwd": "/workspaces/INS_lab_programs/Caesor_Cipher"
+                "terminal.integrated.cwd": "/workspaces/INS_lab_programs"
             }
         }
-    }
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces,type=bind"
 }
