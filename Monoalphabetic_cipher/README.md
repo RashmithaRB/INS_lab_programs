@@ -75,32 +75,14 @@ public static void main(String[] args) {
   - Calls `decrypt()` to decrypt the text back to its original form.
   - Displays both encrypted and decrypted results.
 
-## Running the Code in Codespaces
+## Running the Code in Replint
 
-### 1. Navigate to the Correct Folder
-Since your repository structure is as follows:
-```
-INS_lab_programs/
-│── Monoalphabetic/
-│   ├── monoalphabetic.java
-│   ├── README.md
-```
-Ensure that you navigate to the `Monoalphabetic` directory in your Codespace terminal:
-```sh
-cd INS_lab_programs/Monoalphabetic
-```
+### Click on the link below to run the code in replint
 
-### 2. Compile the Java Program
-```sh
-javac monoalpha.java
-```
-This will compile the Java program, generating a `monoalpha.class` file.
+https://replit.com/@RashmithaR/Java#src/main/java/Main.java
 
-### 3. Run the Java Program
-```sh
-java monoalpha
-```
-You will be prompted to enter a string. After entering a lowercase string, the program will output the encrypted and decrypted text.
+### click on run button to execute the program 
+
 
 ### Example Run
 ```
