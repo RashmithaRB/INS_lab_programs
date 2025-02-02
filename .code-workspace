@@ -1,9 +1,0 @@
-{
-    "folders": [
-        { "path": "INS_lab_programs/Caesor_Cipher" },
-        { "path": "INS_lab_programs/Hill_cipher" },
-        { "path": "INS_lab_programs/Monoalphabetic_cipher" }
-        { "path": "INS_lab_programs/Playfair_cipher" }
-    ],
-    "settings": {}
-}
