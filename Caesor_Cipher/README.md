@@ -78,6 +78,10 @@ To run this Python program in **GitHub Codespaces**, follow these steps:
 - Click on the **"<> Code"** button, then go to the **Codespaces** tab.
 - Click **"New Codespace"** (or open an existing one).
 
+**OR**
+  
+ **LINK TO CODESPACE**
+**https://potential-engine-q7qg9p6r4v4v24g7g.github.dev/**
 ### **2. Install Python (If Not Installed)**
 Run the following command in the terminal inside Codespaces:
 ```sh
