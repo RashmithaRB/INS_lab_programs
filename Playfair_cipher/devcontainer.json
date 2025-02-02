@@ -1,0 +1,10 @@
+{
+    "workspaceFolder": "/workspaces/INS_lab_programs/Playfair_Cipher",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.cwd": "/workspaces/INS_lab_programs/Playfair_Cipher"
+            }
+        }
+    }
+}
