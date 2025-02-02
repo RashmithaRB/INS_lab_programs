@@ -81,6 +81,8 @@ public static void main(String[] args) {
 
 https://replit.com/@RashmithaR/Java#src/main/java/Main.java
 
+### click on run button to execute the program 
+
 
 ### Example Run
 ```
