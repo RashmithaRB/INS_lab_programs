@@ -83,8 +83,8 @@ The program prints the encrypted and decrypted text:
  print("Decrypted text:", decrypted_text)
 ```
 ## Colab link to run the program
-[https://colab.research.google.com/drive/1ZbKL2mBdlbCBVVn5iCIeo0SkNdpO6suI?usp=sharing]
-Colab link
+https://colab.research.google.com/drive/1ZbKL2mBdlbCBVVn5iCIeo0SkNdpO6suI?usp=sharing
+
 
 ## Example Run
 ### Input:
