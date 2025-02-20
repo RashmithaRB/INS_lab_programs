@@ -1,77 +1,97 @@
 # Feistel Cipher Implementation
 
-## Introduction
-The Feistel cipher is a symmetric encryption technique that serves as the foundation for many block ciphers, such as DES. It divides the input data into two halves and processes them over multiple rounds using a round function and key.
+This repository contains a simple implementation of the Feistel cipher in Python. The Feistel cipher is a symmetric structure used in the construction of block ciphers. It splits the plaintext into two halves and processes them through multiple rounds of encryption and decryption.
 
-This implementation provides both encryption and decryption using a lightweight Feistel cipher.
+## Code Explanation
 
-## How the Code Works
-### 1. Function Definitions
-#### Feistel Function
+### feistel_round Function
+
 ```python
-def feistel(block, key, rounds=4):
+def feistel_round(L, R, K):
+    """
+    One round of the Feistel cipher.
+    Uses a simple round function: f(R, K) = (sum of ASCII values of R + K) % 256.
+    Then, new_R = L XOR f(R, K).
+    """
+    new_L = R  # The right half becomes the new left half.
+    round_function = (sum(ord(c) for c in R) + K) % 256  # Sum ASCII values of R and add key
+    new_R = "".join(chr(ord(L[i]) ^ round_function) for i in range(len(L)))  # XOR operation
+    return new_L, new_R
 ```
-- **block**: The input text (plaintext or ciphertext) divided into two halves.
-- **key**: The encryption/decryption key.
-- **rounds**: The number of Feistel rounds (default is 4).
 
-**Process:**
-- The input block is split into left (`L`) and right (`R`) halves.
-- The Feistel function is applied iteratively.
-- In each round, `L` becomes `R`, and `R` is XORed with the corresponding characters from the key.
-- Finally, the concatenated result is returned.
+This function performs one round of the Feistel cipher. It takes three arguments: `L` (left half of the data), `R` (right half of the data), and `K` (round key). The round function used here is a simple sum of the ASCII values of the characters in `R` plus the key `K`, modulo 256. The new right half is obtained by XORing the left half with the result of the round function.
 
-#### Encryption Function
+### feistel_encrypt Function
+
 ```python
-def encrypt(plaintext, key):
-    return feistel(plaintext, key)
-```
-Calls the `feistel` function to transform plaintext into ciphertext.
+def feistel_encrypt(plaintext, round_keys):
+    """
+    Encrypts a string plaintext using Feistel cipher with given round keys.
+    """
+    if len(plaintext) % 2 != 0:  # Ensure even length
+        plaintext += "X"
 
-#### Decryption Function
+    L, R = plaintext[:len(plaintext)//2], plaintext[len(plaintext)//2:]  # Split into two halves
+
+    for K in round_keys:  # Apply multiple Feistel rounds
+        L, R = feistel_round(L, R, K)
+
+    return L + R  # Concatenate final halves as ciphertext
+```
+
+This function encrypts a plaintext string using the Feistel cipher with the provided round keys. If the plaintext length is odd, an extra character "X" is appended to make it even. The plaintext is then split into two halves, and multiple Feistel rounds are applied using the round keys. The final halves are concatenated to form the ciphertext.
+
+### feistel_decrypt Function
+
 ```python
-def decrypt(ciphertext, key):
-    return feistel(ciphertext, key)
-```
-Since the Feistel structure is symmetric, applying the same function twice (with the same key) retrieves the original plaintext.
+def feistel_decrypt(ciphertext, round_keys):
+    """
+    Decrypts a string ciphertext using Feistel cipher.
+    Uses the round keys in reverse order.
+    """
+    L, R = ciphertext[:len(ciphertext)//2], ciphertext[len(ciphertext)//2:]  # Split into two halves
 
-### 2. Example Usage
+    for K in reversed(round_keys):  # Reverse the encryption rounds
+        R, L = feistel_round(R, L, K)  # Reverse the Feistel process
+
+    return (L + R).replace("X","")  # Concatenate to get the original plaintext
+```
+
+This function decrypts a ciphertext string using the Feistel cipher. It uses the round keys in reverse order to reverse the encryption process. The ciphertext is split into two halves, and multiple Feistel rounds are applied in reverse order. The final halves are concatenated to get the original plaintext, and any extra "X" added during encryption is removed.
+
+### Example Usage
+
 ```python
-key = "abcd"
-plaintext = "hello!"
-ciphertext = encrypt(plaintext, key)
-decrypted_text = decrypt(ciphertext, key)
-
-print("Ciphertext:", ciphertext)
-print("Decrypted Text:", decrypted_text)
+round_keys = [3, 7, 2, 5]  # Example round keys
+plaintext = "HELLO"  # Example plaintext
+encrypted_text = feistel_encrypt(plaintext, round_keys)
+decrypted_text = feistel_decrypt(encrypted_text, round_keys)
+print(f"Plaintext: {plaintext}")          # Expected: HELLO
+print(f"Ciphertext: {encrypted_text}")
+print(f"Decrypted: {decrypted_text}")
 ```
 
-### 3. Input and Output
-#### Input:
-```
-Plaintext: hello!
-Key: abcd
-```
-#### Output:
-```
-Ciphertext: encrypted_text
-Decrypted Text: hello!
-```
+This example demonstrates the usage of the Feistel cipher functions. It defines a list of round keys and a plaintext string. It then encrypts the plaintext, decrypts the resulting ciphertext, and prints the original plaintext, ciphertext, and decrypted text.
 
-## COLAB LINK
+## How to run using colab
+### Click on the below link
 
 https://colab.research.google.com/drive/146FzReWiZi6qg2zZduDWTbzEbMrjgjZ0?usp=sharing
 
-## Key Features
-- Simple and efficient implementation using string manipulations.
-- Uses XOR operations for encryption and decryption.
-- The same function is used for both encryption and decryption.
-- The number of rounds can be adjusted for increased security.
+## How to Run using codespace
 
-## Limitations
-- This is a basic Feistel implementation without complex round functions.
-- The key length must match the left half of the block for proper execution.
+1.Navigate to codespaces created in repository
+2. Ensure you have Python installed on your system.
+3. Navigate the code to a file, e.g., `feistel_cipher.py`.
+4. Run the script using the command:
+   ```sh
+   python feistel_cipher.py
+   ```
 
 ## Conclusion
-This implementation of the Feistel cipher provides a fundamental understanding of the structure used in real-world cryptographic algorithms. While simple, it demonstrates how a symmetric encryption scheme operates efficiently.
+
+The provided implementation demonstrates a simple Feistel cipher with basic round functions. This can be extended and modified for more complex encryption schemes.
+
+
+
 
