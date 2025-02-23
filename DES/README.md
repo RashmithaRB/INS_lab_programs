@@ -1,4 +1,4 @@
-# README: Key Generation Code Explanation
+#  Key Generation Code Explanation
 
 ## Overview
 This script generates **8 different keys** by applying bitwise shifts and random bit removals to a given binary string. It uses **bitwise operations, random number generation, and list manipulations** to transform data systematically.
