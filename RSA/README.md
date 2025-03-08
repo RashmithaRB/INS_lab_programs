@@ -112,6 +112,10 @@ The decrypted message is: 88
    - `M = (12^125) % 187 = 88`
    - Decrypted message matches original: `88`
 
+## Colab Link to run the code
+
+https://colab.research.google.com/drive/1K2w2wN9dO4xl_p3z9AFD5MjI3ihO8mVG?usp=sharing
+
 ---
 ## Summary
 - The **public key (e, n)** is used for encryption.
