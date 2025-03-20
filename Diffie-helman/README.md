@@ -47,6 +47,11 @@ The program follows these steps to implement the Diffie-Hellman Key Exchange:
      - Common secret key computed by B
    - The shared secret key is the same for both A and B, ensuring secure communication.
 
+
+## Link to execute code
+
+https://colab.research.google.com/drive/1Xru3Mo2NZsLrCdKWlLc2h2pjcSLMJ7B9?usp=sharing
+
 ## Sample Input/Output
 ```
 Enter prime no: 23
